@@ -4,6 +4,9 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Column
 import javax.persistence.ManyToOne
+import javax.persistence.JoinColumn
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
 
 @Entity
 class Beverage {
@@ -18,7 +21,8 @@ class Beverage {
   @Column(nullable = false)
   String recipe
 
-  @ManyToOne
+  @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+  @JoinColumn(name="category_id")
   Category category
 
 }

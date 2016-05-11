@@ -4,6 +4,8 @@ import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Column
 import javax.persistence.OneToMany
+import javax.persistence.FetchType
+import javax.persistence.CascadeType
 
 @Entity
 class Category {
@@ -14,7 +16,7 @@ class Category {
   @Column(nullable = false)
   String name
 
-  @OneToMany
+  @OneToMany(mappedBy="category", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
   List<Beverage> beverages
 
 }
