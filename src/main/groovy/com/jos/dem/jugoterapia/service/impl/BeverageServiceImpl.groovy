@@ -14,10 +14,7 @@ class BeverageServiceImpl implements BeverageService {
   CategoryRepository repository
 
   List<Category> categories(){
-    List<Category> categories = repository.findAll()
-    categories.each {
-    }
-    categories
+    repository.findAll()
   }
 
 }

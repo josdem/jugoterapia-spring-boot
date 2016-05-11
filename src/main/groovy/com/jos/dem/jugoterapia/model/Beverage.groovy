@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne
 import javax.persistence.JoinColumn
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
+import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
 class Beverage {
@@ -21,8 +22,9 @@ class Beverage {
   @Column(nullable = false)
   String recipe
 
-  @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+  @ManyToOne(fetch=FetchType.LAZY)
   @JoinColumn(name="category_id")
+  @JsonIgnore
   Category category
 
 }

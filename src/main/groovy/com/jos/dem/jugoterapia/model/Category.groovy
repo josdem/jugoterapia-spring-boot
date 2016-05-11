@@ -16,7 +16,7 @@ class Category {
   @Column(nullable = false)
   String name
 
-  @OneToMany(mappedBy="category", cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+  @OneToMany(mappedBy="category", fetch=FetchType.LAZY)
   List<Beverage> beverages
 
 }
