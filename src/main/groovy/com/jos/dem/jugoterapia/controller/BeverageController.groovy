@@ -24,9 +24,14 @@ class BeverageController {
 
   @RequestMapping("beverages")
   @ResponseBody
-  List<Beverage> beverage(@RequestParam("categoryId") Long categoryId){
+  List<Beverage> beverages(@RequestParam("categoryId") Long categoryId){
     beverageService.findByCategory(categoryId)
   }
 
+  @RequestMapping("beverage")
+  @ResponseBody
+  Beverage beverage(@RequestParam("beverageId") Long beverageId){
+    beverageService.findById(beverageId)
+  }
 
 }

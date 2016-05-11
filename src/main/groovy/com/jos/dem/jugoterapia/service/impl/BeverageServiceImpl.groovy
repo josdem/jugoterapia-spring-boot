@@ -26,4 +26,8 @@ class BeverageServiceImpl implements BeverageService {
     beverageRepository.findByCategory(category)
   }
 
+  Beverage findById(Long beverageId){
+    beverageRepository.findOne(beverageId)
+  }
+
 }
