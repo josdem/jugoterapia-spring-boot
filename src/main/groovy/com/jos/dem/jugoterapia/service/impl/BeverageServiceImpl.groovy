@@ -1,4 +1,4 @@
-package com.jos.dem.jugoterapia.impl.service
+package com.jos.dem.jugoterapia.service.impl
 
 import org.springframework.stereotype.Service
 import org.springframework.beans.factory.annotation.Autowired

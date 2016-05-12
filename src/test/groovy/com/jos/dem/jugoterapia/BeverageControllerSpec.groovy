@@ -1,10 +1,11 @@
-package com.jos.dem.jugoterapia.controller
+package com.jos.dem.jugoterapia
 
 import spock.lang.Specification
 
 import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
 import com.jos.dem.jugoterapia.service.BeverageService
+import com.jos.dem.jugoterapia.controller.BeverageController
 
 class BeverageControllerSpec extends Specification {
 
