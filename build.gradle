@@ -30,6 +30,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
   compile('mysql:mysql-connector-java:5.1.34')
 	compile('org.codehaus.groovy:groovy')
+  testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
