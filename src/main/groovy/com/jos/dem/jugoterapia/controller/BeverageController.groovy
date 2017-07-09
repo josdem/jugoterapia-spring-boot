@@ -26,6 +26,9 @@ import com.jos.dem.jugoterapia.service.BeverageService
 import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 @Controller
 @RequestMapping("/beverage")
 class BeverageController {
@@ -33,21 +36,26 @@ class BeverageController {
   @Autowired
   BeverageService beverageService
 
+  Logger log = LoggerFactory.getLogger(this.class)
+
   @RequestMapping("categories")
   @ResponseBody
   List<Category> categories(){
+    log.info 'Listing categories'
     beverageService.categories()
   }
 
   @RequestMapping("beverages")
   @ResponseBody
   List<Beverage> beverages(@RequestParam("categoryId") Long categoryId){
+    log.info "Listing beverages by category: $categoryId"
     beverageService.findByCategory(categoryId)
   }
 
   @RequestMapping("beverage")
   @ResponseBody
   Beverage beverage(@RequestParam("beverageId") Long beverageId){
+    log.info "Listing beverage: $beverageId"
     beverageService.findById(beverageId)
   }
 
