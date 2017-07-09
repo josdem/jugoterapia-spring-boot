@@ -27,6 +27,7 @@ import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
 
 @Controller
+@RequestMapping("/beverage")
 class BeverageController {
 
   @Autowired
