@@ -22,6 +22,8 @@ import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+
 @Entity
 class Category {
 
@@ -32,6 +34,7 @@ class Category {
   String name
 
   @OneToMany(mappedBy="category", fetch=FetchType.LAZY)
+  @JsonIgnore
   List<Beverage> beverages
 
 }
