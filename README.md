@@ -5,7 +5,7 @@ Jugoterapia is an Android application mainly fosued in improve your healty based
 
 #### Configuration
 
-https://github.com/josdem/jugoterapia-spring-boot/wik
+https://github.com/josdem/jugoterapia-spring-boot/wiki
 
 #### To run tests
 
