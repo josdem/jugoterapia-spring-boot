@@ -19,7 +19,7 @@ gradle test
 gradle -Dspring.config.location=$HOME/.jugoterapia/application-development.yml bootRun
 ```
 
-#### Read this as reference
+#### Go here for more information
 
 http://josdem.io/jugoterapia/jugoterapia/
 
