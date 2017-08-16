@@ -36,8 +36,7 @@ class BeverageServiceImpl implements BeverageService {
     categoryRepository.findAll()
   }
 
-  List<Beverage> findByCategory(Long categoryId){
-    Category category = categoryRepository.findOne(categoryId)
+  List<Beverage> findByCategory(Category category){
     beverageRepository.findByCategory(category)
   }
 
