@@ -15,7 +15,7 @@
 
 package com.jos.dem.jugoterapia
 
-import spock.lang.Specification
+import javax.servlet.http.HttpServletRequest
 
 import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
@@ -23,12 +23,15 @@ import com.jos.dem.jugoterapia.service.BeverageService
 import com.jos.dem.jugoterapia.controller.BeverageController
 import com.jos.dem.jugoterapia.repository.CategoryRepository
 
+import spock.lang.Specification
+
 class BeverageControllerSpec extends Specification {
 
   BeverageController controller = new BeverageController()
 
   BeverageService beverageService = Mock(BeverageService)
   CategoryRepository categoryRepository = Mock(CategoryRepository)
+  HttpServletRequest request = Mock(HttpServletRequest)
 
   def setup(){
     controller.beverageService = beverageService
@@ -73,7 +76,7 @@ class BeverageControllerSpec extends Specification {
       Beverage beverage = new Beverage(id:beverageId)
     when:"We get an beverage by id"
       beverageService.findById(beverageId) >> beverage
-      Beverage result = controller.beverage(beverageId)
+      Beverage result = controller.beverage(beverageId, request)
     then:"We expect beverage"
      result instanceof Beverage
      result.id == beverageId
