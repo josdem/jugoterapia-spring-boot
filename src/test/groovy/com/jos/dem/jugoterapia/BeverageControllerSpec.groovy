@@ -53,10 +53,12 @@ class BeverageControllerSpec extends Specification {
     given:"Two beverages"
       Beverage beverageOne = new Beverage()
       Beverage beverageTwo = new Beverage()
-    and:"A categoryId"
+    and:"A category"
       Long categoryId = 1L
+      Category category = new Category(id:categoryId)
     when:"We get beverages by category"
-      beverageService.findByCategory(categoryId) >> [beverageOne, beverageTwo]
+      categoryRepository.findOne(categoryId) >> category
+      beverageService.findByCategory(category) >> [beverageOne, beverageTwo]
       List<Beverage> result = controller.beverages(categoryId)
     then:
       result.size() == 2
