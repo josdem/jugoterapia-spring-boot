@@ -16,6 +16,8 @@
 
 package com.jos.dem.jugoterapia.controller
 
+import javax.servlet.http.HttpServletRequest
+
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -58,7 +60,9 @@ class BeverageController {
 
   @RequestMapping("beverage")
   @ResponseBody
-  Beverage beverage(@RequestParam("beverageId") Long beverageId){
+  Beverage beverage(@RequestParam("beverageId") Long beverageId, HttpServletRequest request){
+    String remoteIP = request.getHeader('X-Real-IP')
+    log.info "Attenging request from: $remoteIP"
     Beverage beverage = beverageService.findById(beverageId)
     log.info "Listing beverage: $beverage.name"
     beverage
