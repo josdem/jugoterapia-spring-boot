@@ -59,8 +59,9 @@ class BeverageController {
   @RequestMapping("beverage")
   @ResponseBody
   Beverage beverage(@RequestParam("beverageId") Long beverageId){
-    log.info "Listing beverage: $beverageId"
-    beverageService.findById(beverageId)
+    Beverage beverage = beverageService.findById(beverageId)
+    log.info "Listing beverage: $beverage.name"
+    beverage
   }
 
 }
