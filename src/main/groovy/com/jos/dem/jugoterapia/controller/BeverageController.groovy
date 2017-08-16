@@ -48,8 +48,9 @@ class BeverageController {
   @RequestMapping("beverages")
   @ResponseBody
   List<Beverage> beverages(@RequestParam("categoryId") Long categoryId){
-    log.info "Listing beverages by category: $categoryId"
-    beverageService.findByCategory(categoryId)
+    Category category = categoryRepository.findOne(categoryId)
+    log.info "Listing beverages by category: $category.name"
+    beverageService.findByCategory(category)
   }
 
   @RequestMapping("beverage")
