@@ -58,9 +58,8 @@ class BeverageServiceSpec extends Specification {
       Long categoryId = 1L
       Category category = new Category(id:categoryId)
     when:"We get beverages by category"
-      categoryRepository.findOne(categoryId) >> category
       beverageRepository.findByCategory(category) >> [beverageOne, beverageTwo]
-      List<Beverage> result = service.findByCategory(categoryId)
+      List<Beverage> result = service.findByCategory(category)
     then:
       result.size() == 2
       result.contains(beverageOne)

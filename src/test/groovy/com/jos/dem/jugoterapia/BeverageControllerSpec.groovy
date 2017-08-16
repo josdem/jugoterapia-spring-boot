@@ -21,15 +21,18 @@ import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
 import com.jos.dem.jugoterapia.service.BeverageService
 import com.jos.dem.jugoterapia.controller.BeverageController
+import com.jos.dem.jugoterapia.repository.CategoryRepository
 
 class BeverageControllerSpec extends Specification {
 
   BeverageController controller = new BeverageController()
 
   BeverageService beverageService = Mock(BeverageService)
+  CategoryRepository categoryRepository = Mock(CategoryRepository)
 
   def setup(){
     controller.beverageService = beverageService
+    controller.categoryRepository = categoryRepository
   }
 
   void "should get categories"(){

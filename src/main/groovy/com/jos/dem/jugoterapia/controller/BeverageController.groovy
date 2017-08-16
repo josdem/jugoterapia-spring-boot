@@ -22,9 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.beans.factory.annotation.Autowired
 
-import com.jos.dem.jugoterapia.service.BeverageService
-import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.model.Beverage
+import com.jos.dem.jugoterapia.model.Category
+import com.jos.dem.jugoterapia.service.BeverageService
+import com.jos.dem.jugoterapia.repository.CategoryRepository
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -35,6 +36,8 @@ class BeverageController {
 
   @Autowired
   BeverageService beverageService
+  @Autowired
+  CategoryRepository categoryRepository
 
   Logger log = LoggerFactory.getLogger(this.class)
 
