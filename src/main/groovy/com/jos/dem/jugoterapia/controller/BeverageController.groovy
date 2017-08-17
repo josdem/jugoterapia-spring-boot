@@ -64,7 +64,7 @@ class BeverageController {
     String remoteIP = request.getHeader('X-Real-IP')
     log.info "Attenging request from: $remoteIP"
     Beverage beverage = beverageService.findById(beverageId)
-    log.info "Listing beverage: $beverage.name"
+    log.info "Listing beverage: $beverage.id: $beverage.name"
     beverage
   }
 
