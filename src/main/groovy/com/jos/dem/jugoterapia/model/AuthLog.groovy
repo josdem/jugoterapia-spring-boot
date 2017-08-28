@@ -13,14 +13,28 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.repository
+package com.jos.dem.jugoterapia.model
 
-import org.springframework.data.jpa.repository.JpaRepository
+import static javax.persistence.GenerationType.AUTO
 
-import com.jos.dem.jugoterapia.model.UserLog
+import javax.persistence.Id
+import javax.persistence.Column
+import javax.persistence.Entity
 
-interface UserLogRepository extends JpaRepository<UserLog,Long>{
+@Entity
+class AuthLog {
 
-  void save(UserLog userLog)
+  @Ig
+  @GeneratedValue(strategy=AUTO)
+  Long id
+
+  @Column(nullable = false)
+  String name
+  @Column(nullable = false)
+  String email
+  @Column(nullable = false)
+  String token
+  @Column(nullable = false)
+  Date dateCreated = new Date()
 
 }

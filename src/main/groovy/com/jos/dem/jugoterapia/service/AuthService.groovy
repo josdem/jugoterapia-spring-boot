@@ -13,28 +13,10 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.model
+package com.jos.dem.jugoterapia.service
 
-import static javax.persistence.GenerationType.AUTO
+interface AuthService {
 
-import javax.persistence.Id
-import javax.persistence.Column
-import javax.persistence.Entity
-
-@Entity
-class UserLog {
-
-  @Ig
-  @GeneratedValue(strategy=AUTO)
-  Long id
-
-  @Column(nullable = false)
-  String name
-  @Column(nullable = false)
-  String email
-  @Column(nullable = false)
-  String token
-  @Column(nullable = false)
-  Date dateCreated = new Date()
+  void save(Command authCommand)
 
 }
