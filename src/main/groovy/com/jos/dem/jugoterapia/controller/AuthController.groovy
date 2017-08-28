@@ -18,22 +18,33 @@ package com.jos.dem.jugoterapia.controller
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.InitBinder
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.command.AuthCommand
+import com.jos.dem.jugoterapia.validator.AuthValidator
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 @RestController
-@RequestMapping("/user")
-class UserController {
+@RequestMapping("/auth")
+class AuthController {
 
+  @Autowired
+  AuthValidator authValiator
 
-  @RequestMapping(method = POST, value = "/log", consumes="application/json")
-  ResponseEntity<String> message(@RequestBody AuthCommand command) {
+  @InitBinder
+  private void initBinder(WebDataBinder binder) {
+    binder.addValidators(authValidator)
+  }
+
+  @RequestMapping(method = POST, value = "/validate", consumes="application/json")
+  ResponseEntity<String> message(@Valid @RequestBody AuthCommand command) {
+    authService.save(command)
     new ResponseEntity<String>("OK", HttpStatus.OK)
   }
 
