@@ -15,31 +15,26 @@
 
 package com.jos.dem.jugoterapia.model
 
+import static javax.persistence.GenerationType.AUTO
+
 import javax.persistence.Id
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.ManyToOne
-import javax.persistence.JoinColumn
-import javax.persistence.FetchType
-import javax.persistence.CascadeType
-import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
-class Beverage {
+class UserLog {
 
-  @Id
+  @Ig
+  @GeneratedValue(strategy=AUTO)
   Long id
 
   @Column(nullable = false)
   String name
   @Column(nullable = false)
-  String ingredients
+  String email
   @Column(nullable = false)
-  String recipe
-
-  @ManyToOne(fetch=FetchType.LAZY)
-  @JoinColumn(name="category_id")
-  @JsonIgnore
-  Category category
+  String token
+  @Column(nullable = false)
+  Date dateCreated = new Date()
 
 }
