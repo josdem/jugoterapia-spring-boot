@@ -17,10 +17,10 @@ package com.jos.dem.jugoterapia.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 
-import com.jos.dem.jugoterapia.model.UserLog
+import com.jos.dem.jugoterapia.model.AuthLog
 
-interface AuthRepository extends JpaRepository<UserLog,Long>{
+interface AuthRepository extends JpaRepository<AuthLog,Long>{
 
-  void save(UserLog userLog)
+  void save(AuthLog authLog)
 
 }

@@ -15,8 +15,10 @@
 
 package com.jos.dem.jugoterapia.service
 
+import com.jos.dem.jugoterapia.command.Command
+
 interface AuthService {
 
-  void save(Command authCommand)
+  void save(Command command)
 
 }

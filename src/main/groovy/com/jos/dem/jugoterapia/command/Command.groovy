@@ -14,6 +14,8 @@
   limitations under the License.
 */
 
+package com.jos.dem.jugoterapia.command
+
 import java.io.Serializable
 
 interface Command extends Serializable{}

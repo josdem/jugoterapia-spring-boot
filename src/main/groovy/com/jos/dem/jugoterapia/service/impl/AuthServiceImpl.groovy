@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import com.jos.dem.jugoterapia.model.AuthLog
 import com.jos.dem.jugoterapia.command.Command
 import com.jos.dem.jugoterapia.command.AuthCommand
+import com.jos.dem.jugoterapia.service.AuthService
 import com.jos.dem.jugoterapia.repository.AuthRepository
 
 @Service
