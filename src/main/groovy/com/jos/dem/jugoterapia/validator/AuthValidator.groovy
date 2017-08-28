@@ -14,20 +14,24 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.command
+package com.jos.dem.jugoterapia.validator
 
-import javax.validation.constraints.NotNull
-import org.hibernate.validator.constraints.Email
+import org.springframework.validation.Errors
+import org.springframework.validation.Validator
+import org.springframework.stereotype.Component
 
-class AuthCommand implements Command {
+import com.jos.dem.jugoterapia.command.AuthCommand
 
-  @NotNull
-  String name
+@Component
+class AuthValidator implements Validator {
 
-  @NotNull
-  String token
+  @Override
+  boolean supports(Class<?> clazz) {
+    AuthCommand.class.equals(clazz)
+  }
 
-  @Email
-  String email
+  void validate(Object target, Errors errors) {
+    AuthCommand authCommand = (AuthCommand) target
+  }
 
 }
