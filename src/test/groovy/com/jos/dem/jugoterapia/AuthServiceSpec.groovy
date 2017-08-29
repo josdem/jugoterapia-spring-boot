@@ -13,32 +13,41 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.service.impl
-
-import org.springframework.stereotype.Service
-import org.springframework.beans.factory.annotation.Autowired
+package com.jos.dem.jugoterapia
 
 import com.jos.dem.jugoterapia.model.AuthLog
 import com.jos.dem.jugoterapia.command.Command
 import com.jos.dem.jugoterapia.command.AuthCommand
 import com.jos.dem.jugoterapia.service.AuthService
+import com.jos.dem.jugoterapia.service.impl.AuthServiceImpl
 import com.jos.dem.jugoterapia.repository.AuthRepository
 
-@Service
-class AuthServiceImpl implements AuthService {
+import spock.lang.Specification
 
-  @Autowired
-  AuthRepository authRepository
+class AuthServiceSpec extends Specification {
 
-  AuthLog save(Command command){
-    AuthLog authLog = new AuthLog(
-      name: command.name,
-      email: command.email,
-      token: command.token,
-      dateCreated: new Date()
-    )
-    authRepository.save(authLog)
-    authLog
+  AuthService service = new AuthServiceImpl()
+
+  AuthRepository authRepository = Mock(AuthRepository)
+
+  def setup(){
+    service.authRepository = authRepository
+  }
+
+  void "should save auth command"(){
+    given:'And auth command'
+      Command command = new AuthCommand(
+        name:'josdem',
+        email: 'joseluis.delacruz@gmail.com',
+        token: 'token'
+      )
+    when:'We save'
+      AuthLog result = service.save(command)
+    then:'We expect command saved'
+      result.name == 'josdem'
+      result.email == 'joseluis.delacruz@gmail.com'
+      result.token == 'token'
+      1 * authRepository.save(_ as AuthLog)
   }
 
 }

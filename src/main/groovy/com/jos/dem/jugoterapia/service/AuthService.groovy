@@ -15,10 +15,11 @@
 
 package com.jos.dem.jugoterapia.service
 
+import com.jos.dem.jugoterapia.model.AuthLog
 import com.jos.dem.jugoterapia.command.Command
 
 interface AuthService {
 
-  void save(Command command)
+  AuthLog save(Command command)
 
 }
