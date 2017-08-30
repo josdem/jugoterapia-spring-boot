@@ -67,6 +67,7 @@ class AuthController {
 
   @ExceptionHandler(Exception.class)
   void handleException(HttpServletResponse response, Exception exception){
+    println exception.printStackTrace()
     log.info "Exception: $exception.message"
     response.status = HttpServletResponse.SC_UNAUTHORIZED
     response.writer.print('Unauthorized')

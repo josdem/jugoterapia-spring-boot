@@ -21,12 +21,22 @@ import org.springframework.stereotype.Component
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
+import com.google.api.client.extensions.appengine.http.UrlFetchTransport
+import com.google.api.client.json.jackson.JacksonFactory
+
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 @Component
 class TokenValidator {
 
+  private static final JacksonFactory jacksonFactory = new JacksonFactory()
+  private static final CLIENT_ID = 9001
+
+  Logger log = LoggerFactory.getLogger(this.class)
+
   void validate(String token){
-    GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
+    GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(UrlFetchTransport.getDefaultInstance(), jacksonFactory)
       .setAudience(Collections.singletonList(CLIENT_ID))
       .build();
 
