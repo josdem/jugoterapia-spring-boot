@@ -19,6 +19,7 @@ package com.jos.dem.jugoterapia.controller
 import static org.springframework.web.bind.annotation.RequestMethod.POST
 
 import javax.validation.Valid
+import javax.servlet.http.HttpServletResponse
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.InitBinder
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.command.AuthCommand
@@ -45,6 +48,8 @@ class AuthController {
   @Autowired
   AuthService authService
 
+  Logger log = LoggerFactory.getLogger(this.class)
+
   @InitBinder
   private void initBinder(WebDataBinder binder) {
     binder.addValidators(authValidator)
@@ -55,6 +60,13 @@ class AuthController {
     log.info "Authorization requested: $command.email"
     authService.save(command)
     new ResponseEntity<String>("OK", HttpStatus.OK)
+  }
+
+  @ExceptionHandler(Exception.class)
+  void handleException(HttpServletResponse response, Exception exception){
+    log.info "Exception: $exception.message"
+    response.status = HttpServletResponse.SC_UNAUTHORIZED
+    response.writer.print('Unauthorized')
   }
 
 }
