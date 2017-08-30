@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import com.jos.dem.jugoterapia.command.AuthCommand
 import com.jos.dem.jugoterapia.service.AuthService
 import com.jos.dem.jugoterapia.validator.AuthValidator
+import com.jos.dem.jugoterapia.validator.TokenValidator
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -44,6 +45,8 @@ class AuthController {
 
   @Autowired
   AuthValidator authValidator
+  @Autowired
+  TokenValidator tokenValidator
   @Autowired
   AuthService authService
 
@@ -57,6 +60,7 @@ class AuthController {
   @RequestMapping(method = POST, value = "/validate", consumes="application/json")
   ResponseEntity<String> message(@Valid @RequestBody AuthCommand command) {
     log.info "Authorization requested: $command.email"
+    tokenValidator.validate(command.token)
     authService.save(command)
     new ResponseEntity<String>("OK", HttpStatus.OK)
   }
