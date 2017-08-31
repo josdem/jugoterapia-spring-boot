@@ -59,7 +59,7 @@ class AuthController {
 
   @RequestMapping(method = POST, value = "/validate", consumes="application/json")
   ResponseEntity<String> message(@Valid @RequestBody AuthCommand command) {
-    log.info "Authorization requested: $command.email"
+    log.info "Authorization requested: ${command.dump()}"
     tokenValidator.validate(command.token)
     authService.save(command)
     new ResponseEntity<String>("OK", HttpStatus.OK)
