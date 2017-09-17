@@ -13,7 +13,7 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.exception.BusinessException
+package com.jos.dem.jugoterapia.exception
 
 class BusinessException extends RuntimeException {
 

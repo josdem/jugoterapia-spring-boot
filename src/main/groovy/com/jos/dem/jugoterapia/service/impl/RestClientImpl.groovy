@@ -15,10 +15,12 @@ limitations under the License.
 
 package com.jos.dem.jugoterapia.service.impl
 
+import groovyx.net.http.RESTClient
+
 import org.springframework.stereotype.Service
 
 import com.jos.dem.jugoterapia.service.RestClient
-import com.jos.dem.jugoterapia.service.BusinessException
+import com.jos.dem.jugoterapia.exception.BusinessException
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

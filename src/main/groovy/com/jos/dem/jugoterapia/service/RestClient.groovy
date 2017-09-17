@@ -16,5 +16,5 @@
 package com.jos.dem.jugoterapia.service
 
 interface RestClient {
-  def getData()
+  def getData(String token)
 }
