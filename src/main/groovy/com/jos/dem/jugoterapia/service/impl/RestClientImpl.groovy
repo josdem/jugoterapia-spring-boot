@@ -28,12 +28,12 @@ class RestClientImpl implements RestClient {
 
   Logger log = LoggerFactory.getLogger(this.class)
 
-  def getData(){
+  def getData(String token){
     try {
       log.info "Calling Service"
       RESTClient restClient = new RESTClient()
       def result = restClient.get(
-        uri : 'http://jugoterapia.josdem.io/jugoterapia-server/beverage/beverage?beverageId=35'
+        uri : "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}"
       )
       result.data
     } catch(Exception ex) {
