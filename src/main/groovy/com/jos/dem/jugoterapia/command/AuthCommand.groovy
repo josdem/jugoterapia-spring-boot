@@ -27,6 +27,8 @@ class AuthCommand implements Command {
   @NotNull
   String token
 
+  String picture
+
   @Email
   String email
 

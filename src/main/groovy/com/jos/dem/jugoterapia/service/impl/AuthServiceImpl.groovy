@@ -34,6 +34,7 @@ class AuthServiceImpl implements AuthService {
     AuthLog authLog = new AuthLog(
       name: command.name,
       email: command.email,
+      picture: command.picture,
       dateCreated: new Date()
     )
     authRepository.save(authLog)

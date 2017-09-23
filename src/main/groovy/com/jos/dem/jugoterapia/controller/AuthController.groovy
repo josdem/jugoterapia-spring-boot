@@ -59,11 +59,11 @@ class AuthController {
   }
 
   @RequestMapping(method = POST, value = "/validate", consumes="application/json")
-  ResponseEntity<String> message(@Valid @RequestBody AuthCommand command) {
-    log.info "Authorization requested: $command.email"
-    GoogleCommand googleCommand = (GoogleCommand)restClient.getData(command.token)
-    log.info "${googleCommand: googleCommand.dump()}"
-    authService.save(command)
+  ResponseEntity<String> message(@Valid @RequestBody AuthCommand authCommand) {
+    log.info "Authorization requested: $authCommand.email"
+    GoogleCommand googleCommand = (GoogleCommand)restClient.getData(authCommand.token)
+    authCommand.picture = googleCommand.picture
+    authService.save(authCommand)
     new ResponseEntity<String>("OK", HttpStatus.OK)
   }
 

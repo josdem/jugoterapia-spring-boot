@@ -33,6 +33,8 @@ class AuthLog {
   String name
   @Column(nullable = false)
   String email
+  @Column(nullable = true)
+  String picture
   @Column(nullable = false)
   Date dateCreated = new Date()
 
