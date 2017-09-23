@@ -21,14 +21,14 @@ class GoogleCommand {
   String aud
   String sub
   String email
-  String emailVerified
+  String email_verified
   String iss
   String iat
   String exp
   String name
   String picture
-  String givenName
-  String familyName
+  String given_name
+  String family_name
   String locale
   String alg
   String kid

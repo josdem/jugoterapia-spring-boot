@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.command.AuthCommand
+import com.jos.dem.jugoterapia.command.GoogleCommand
 import com.jos.dem.jugoterapia.service.AuthService
 import com.jos.dem.jugoterapia.service.RestClient
 import com.jos.dem.jugoterapia.validator.AuthValidator
@@ -60,8 +61,8 @@ class AuthController {
   @RequestMapping(method = POST, value = "/validate", consumes="application/json")
   ResponseEntity<String> message(@Valid @RequestBody AuthCommand command) {
     log.info "Authorization requested: $command.email"
-    def result = restClient.getData(command.token)
-    log.info "${result}"
+    GoogleCommand googleCommand = (GoogleCommand)restClient.getData(command.token)
+    log.info "${googleCommand: googleCommand.dump()}"
     authService.save(command)
     new ResponseEntity<String>("OK", HttpStatus.OK)
   }

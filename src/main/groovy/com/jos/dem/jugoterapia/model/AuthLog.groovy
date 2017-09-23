@@ -34,8 +34,6 @@ class AuthLog {
   @Column(nullable = false)
   String email
   @Column(nullable = false)
-  String token
-  @Column(nullable = false)
   Date dateCreated = new Date()
 
 }
