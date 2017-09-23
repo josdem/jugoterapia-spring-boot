@@ -62,6 +62,7 @@ class AuthController {
   ResponseEntity<String> message(@Valid @RequestBody AuthCommand authCommand) {
     log.info "Authorization requested: $authCommand.email"
     GoogleCommand googleCommand = (GoogleCommand)restClient.getData(authCommand.token)
+    log.info "Google Response: ${googleCommand.dump()}"
     authCommand.picture = googleCommand.picture
     authService.save(authCommand)
     new ResponseEntity<String>("OK", HttpStatus.OK)
