@@ -26,9 +26,14 @@ import org.springframework.beans.factory.annotation.Autowired
 import com.jos.dem.jugoterapia.model.Beverage
 import com.jos.dem.jugoterapia.service.BeverageService
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 @RestController
 @RequestMapping("/beverages")
 class BeveragesController {
+
+  Logger log = LoggerFactory.getLogger(this.class)
 
   @Autowired
   BeverageService beverageService
