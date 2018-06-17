@@ -1,5 +1,5 @@
 /*
-  Copyright 2017 José Luis De la Cruz Morales <joseluis.delacruz@gmail.com>
+  Copyright 2018 José Luis De la Cruz Morales <joseluis.delacruz@gmail.com>
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -46,5 +46,5 @@ class BeveragesController {
     log.info "Listing beverage: $beverage.id: $beverage.name"
     beverage
   }
-  
+
 }
