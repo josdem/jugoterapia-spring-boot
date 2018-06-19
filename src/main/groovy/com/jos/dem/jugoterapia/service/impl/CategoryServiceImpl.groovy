@@ -13,10 +13,23 @@
   limitations under the License.
 */
 
-package com.jos.dem.jugoterapia.service
+package com.jos.dem.jugoterapia.service.impl
+
+import org.springframework.stereotype.Service
+import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.model.Category
+import com.jos.dem.jugoterapia.service.CategoryService
+import com.jos.dem.jugoterapia.repository.CategoryRepository
 
-interface CategoryService {
-  Category findOne(Long id)
+@Service
+class CategoryServiceImpl implements CategoryService {
+
+  @Autowired
+  CategoryRepository categoryRepository
+
+  Category findOne(Long id) {
+    categoryRepository.findOne(id)
+  }
+
 }
