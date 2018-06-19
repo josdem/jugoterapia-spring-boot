@@ -18,11 +18,13 @@ package com.jos.dem.jugoterapia.controller
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET
 
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.model.Category
+import com.jos.dem.jugoterapia.model.Beverage
 import com.jos.dem.jugoterapia.service.BeverageService
 import com.jos.dem.jugoterapia.service.CategoryService
 
