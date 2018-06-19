@@ -43,4 +43,9 @@ class CategoryController {
     beverageService.categories()
   }
 
+  @RequestMapping(value="/{id}")
+  List<Beverage> getBeverages(@PathVariable("id") Long categoryId){
+    log.info "Listing beverages by category: ${categoryId}"
+    return beverageService.findByCategory();
+  }
 }
