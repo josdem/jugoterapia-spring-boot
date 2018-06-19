@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 import com.jos.dem.jugoterapia.model.Category
 import com.jos.dem.jugoterapia.service.BeverageService
+import com.jos.dem.jugoterapia.service.CategoryService
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -36,6 +37,8 @@ class CategoryController {
 
   @Autowired
   BeverageService beverageService
+  @Autowired
+  CategoryService categoryService
 
   @RequestMapping(method=GET)
   List<Category> getCategories(){
@@ -46,6 +49,8 @@ class CategoryController {
   @RequestMapping(value="/{id}")
   List<Beverage> getBeverages(@PathVariable("id") Long categoryId){
     log.info "Listing beverages by category: ${categoryId}"
-    return beverageService.findByCategory();
+    Category category = categoryService.findOne(categoryId)
+    beverageService.findByCategory(category)
   }
+
 }
