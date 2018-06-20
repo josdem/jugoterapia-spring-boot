@@ -51,7 +51,7 @@ class CategoryController {
   @RequestMapping(value="/{id}")
   List<Beverage> getBeverages(@PathVariable("id") Long categoryId){
     log.info "Listing beverages by category: ${categoryId}"
-    Category category = categoryService.findOne(categoryId)
+    Category category = categoryService.findById(categoryId)
     beverageService.findByCategory(category)
   }
 

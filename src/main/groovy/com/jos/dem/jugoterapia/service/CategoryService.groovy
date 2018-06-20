@@ -18,5 +18,5 @@ package com.jos.dem.jugoterapia.service
 import com.jos.dem.jugoterapia.model.Category
 
 interface CategoryService {
-  Category findOne(Long id)
+  Category findById(Long id)
 }

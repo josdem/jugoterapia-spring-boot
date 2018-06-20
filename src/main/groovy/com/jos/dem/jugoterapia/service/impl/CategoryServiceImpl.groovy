@@ -28,8 +28,8 @@ class CategoryServiceImpl implements CategoryService {
   @Autowired
   CategoryRepository categoryRepository
 
-  Category findOne(Long id) {
-    categoryRepository.findOne(id)
+  Category findById(Long id) {
+    categoryRepository.findById(id)
   }
 
 }
