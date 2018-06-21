@@ -53,7 +53,7 @@ class BeverageController {
   @RequestMapping("beverages")
   @ResponseBody
   List<Beverage> beverages(@RequestParam("categoryId") Long categoryId){
-    Category category = categoryRepository.findOne(categoryId)
+    Category category = categoryRepository.findById(categoryId)
     log.info "Listing beverages by category: $category.name"
     beverageService.findByCategory(category)
   }
