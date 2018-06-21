@@ -28,13 +28,7 @@ import com.jos.dem.jugoterapia.model.Beverage
 class BeverageServiceImpl implements BeverageService {
 
   @Autowired
-  CategoryRepository categoryRepository
-  @Autowired
   BeverageRepository beverageRepository
-
-  List<Category> categories(){
-    categoryRepository.findAll()
-  }
 
   List<Beverage> findByCategory(Category category){
     beverageRepository.findByCategory(category)
