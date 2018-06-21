@@ -21,6 +21,7 @@ import org.springframework.data.repository.query.Param
 import com.jos.dem.jugoterapia.model.Beverage
 import com.jos.dem.jugoterapia.model.Category
 
-interface BeverageRepository extends CrudRepository<Beverage,Long> {
+interface BeverageRepository extends CrudRepository<Beverage, Long> {
+  Beverage findById(Long id)
   List<Beverage> findByCategory(@Param("category") Category category)
 }

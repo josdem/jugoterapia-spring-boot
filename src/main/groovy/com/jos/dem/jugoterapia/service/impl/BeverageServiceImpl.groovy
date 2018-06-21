@@ -35,7 +35,7 @@ class BeverageServiceImpl implements BeverageService {
   }
 
   Beverage findById(Long beverageId){
-    beverageRepository.findOne(beverageId)
+    beverageRepository.findById(beverageId)
   }
 
 }

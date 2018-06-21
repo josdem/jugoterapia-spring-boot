@@ -28,26 +28,10 @@ class BeverageServiceSpec extends Specification {
 
   BeverageService service = new BeverageServiceImpl()
 
-  CategoryRepository categoryRepository = Mock(CategoryRepository)
   BeverageRepository beverageRepository = Mock(BeverageRepository)
 
   def setup(){
-    service.categoryRepository = categoryRepository
     service.beverageRepository = beverageRepository
-  }
-
-  void "should find categories"(){
-    given:"A categories"
-      Category categoryOne = new Category(id:1,name:'Curativos')
-      Category categoryTwo = new Category(id:2,name:"Energetizantes")
-      List<Category> categories = [categoryOne, categoryTwo]
-    when:"We look for categories"
-      categoryRepository.findAll() >> categories
-      List<Category> result =  service.categories()
-    then:"We expect categories"
-      result.size() == 2
-      result.contains(categoryOne)
-      result.contains(categoryTwo)
   }
 
   void "should get beverages by category"(){
@@ -72,7 +56,7 @@ class BeverageServiceSpec extends Specification {
     and:"A beverage"
       Beverage beverage = new Beverage(id:beverageId)
     when:"We get an beverage by id"
-      beverageRepository.findOne(beverageId) >> beverage
+      beverageRepository.findById(beverageId) >> beverage
       Beverage result = service.findById(beverageId)
     then:"We expect beverage"
      result instanceof Beverage
