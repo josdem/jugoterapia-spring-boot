@@ -39,14 +39,15 @@ class AuthServiceSpec extends Specification {
       Command command = new AuthCommand(
         name:'josdem',
         email: 'joseluis.delacruz@gmail.com',
-        token: 'token'
+        picture: 'happy_face'
       )
     when:'We save'
       AuthLog result = service.save(command)
     then:'We expect command saved'
       result.name == 'josdem'
       result.email == 'joseluis.delacruz@gmail.com'
-      result.token == 'token'
+      result.picture == 'happy_face'
+      result.dateCreated != null
       1 * authRepository.save(_ as AuthLog)
   }
 
