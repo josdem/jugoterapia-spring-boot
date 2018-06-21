@@ -19,4 +19,5 @@ import com.jos.dem.jugoterapia.model.Category
 
 interface CategoryService {
   Category findById(Long id)
+  List<Category> findAll()
 }

@@ -45,7 +45,7 @@ class CategoryController {
   @RequestMapping(method=GET)
   List<Category> getCategories(){
     log.info 'Listing categories'
-    beverageService.categories()
+    categoryService.findAll()
   }
 
   @RequestMapping(value="/{id}")
