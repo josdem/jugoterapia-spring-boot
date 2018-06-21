@@ -18,15 +18,19 @@ package com.jos.dem.jugoterapia
 import spock.lang.Specification
 
 import com.jos.dem.jugoterapia.model.Category
-import com.jos.dem.jugoterapia.model.Beverage
-import com.jos.dem.jugoterapia.service.BeverageService
-import com.jos.dem.jugoterapia.service.impl.BeverageServiceImpl
+import com.jos.dem.jugoterapia.service.CategoryService
+import com.jos.dem.jugoterapia.service.impl.CategoryServiceImpl
 import com.jos.dem.jugoterapia.repository.CategoryRepository
-import com.jos.dem.jugoterapia.repository.BeverageRepository
 
 class CategoryServiceSpec extends Specification {
 
   CategoryService service = new CategoryServiceImpl()
+
+  CategoryRepository categoryRepository = Mock(CategoryRepository)
+
+  def setup() {
+    service.categoryRepository = categoryRepository
+  }
 
   void "should find categories"(){
     given:"A categories"
