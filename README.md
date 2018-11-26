@@ -21,5 +21,5 @@ gradle -Dspring.config.location=$HOME/.jugoterapia/application-development.yml b
 
 #### Go here for more information
 
-http://josdem.io/jugoterapia/jugoterapia/
+https://josdem.io/jugoterapia/jugoterapia/
 
